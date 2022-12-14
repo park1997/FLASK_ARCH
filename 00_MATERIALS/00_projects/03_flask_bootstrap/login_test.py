@@ -19,6 +19,14 @@ def login():
 
 @app.route('/html_test')
 def hello_html():
+    email_address = request.args.get('email_address')
+    passwd = request.args.get('passwd')
+    print(email_address, passwd)
+
+    if email_address == 'dave@gmail.com' and passwd == '111':
+        return_data = {'auth': 'success'}
+    else:
+        return_data = {'auth': 'failed'}
     # html file은 templates 폴더에 위치해야 함
     return render_template('login_rawtest.html')
 

@@ -11,6 +11,9 @@ def login():
     
     if username == 'dave':
         return_data = {'auth': 'success'}
+        return_data["pw"] = passwd
+        return_data["email"] = email
+
     else:
         return_data = {'auth': 'failed'}
     return jsonify(return_data)

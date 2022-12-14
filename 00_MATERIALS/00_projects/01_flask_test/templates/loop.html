@@ -11,5 +11,11 @@
       <li>{{ value }}</li>
       {% endfor %}
     </ul>
+    <br>
+    <ul>
+      {% for index in range(values | length) %}
+      <li>{{values[index]}}  {{loop.index}}</li>
+      {% endfor %}
+    </ul>
   </body>
 </html>
