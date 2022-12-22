@@ -45,7 +45,8 @@ class User(UserMixin):
         if not user:
             mysql_db = conn_mysqldb()
             db_cursor = mysql_db.cursor()
-            sql = "INSERT INTO user_info (USER_EMAIL, BLOG_ID) VALUES ({}, {})".format(str(user_email), str(blog_id))
+            sql = "INSERT INTO user_info (USER_EMAIL, BLOG_ID) VALUES ('{}', '{}')".format(str(user_email), str(blog_id))
+            # sql = "INSERT INTO user_info (USER_EMAIL, BLOG_ID) VALUES ('%s', '%s')" % (str(user_email), str(blog_id))
             db_cursor.execute(sql)
             mysql_db.commit()
             return User.find(user_email)

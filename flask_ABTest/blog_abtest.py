@@ -10,7 +10,10 @@ from flask_login import login_required  # 로그인 된 사용자만 access하�
 from flask_login import login_user      # 로그인된 해당 객체를 로그인 유저 객체에 넘겨줘야 그다음부터 세션이 만들어지고 해당 세션으로 통신하게끔 구성함
 from flask_login import logout_user     # 로그아웃을 할때는 해당 객체를 로그아웃 객체에 넘겨주면됨
 
+from blog_control.user_mgmt import User
+
 from flask_cors import CORS     # flask와 view와같이 백앤드와 프론트앤드가 다른 서버를 쓴다고하면 동일한 웹서버로의 request는 괜찮은데, 웹브라우저상에서 다른 웹서버에다가 스크립트를 기반으로해서 요청하는건 지원안함, 이를 지원하기 위해 도메인 헤더를 넣는 라이브러임
+
 
 from blog_view import blog
 
@@ -22,7 +25,7 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 app = Flask(__name__, static_url_path="/static")
 CORS(app)
 # 암호화 난수임, 매번 다른 값으로 해야하는데 그동안 설정된 세션은 날라가기때문에 고정된 값으로 함
-app.secure_key = "dave_server"
+app.secret_key = "dave_server"
 
 app.register_blueprint(blog.blog_abtest, url_prefix="/blog")
 

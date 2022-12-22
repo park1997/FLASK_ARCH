@@ -19,13 +19,10 @@ def set_email():
         print('set_email', request.form['user_email'])
         user = User.create(request.form['user_email'], 'A')
         # https://docs.python.org/3/library/datetime.html#timedelta-objects
-        login_user(user, remember=True, duration=datetime.timedelta(days=365))
-
+        login_user(user, remember=True, duration=datetime.timedelta(days = 365))
         return redirect(url_for('blog.test_blog'))
-
     # return redirect('/blog/test_blog')
     # return make_response(jsonify(success=True), 200)
-
 
 @blog_abtest.route('/logout')
 def logout():
